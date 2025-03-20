@@ -7,6 +7,7 @@ import settings
 class Ball:
     def __init__(self):
         self.radius = settings.BALL_RADIUS
+        self.velocity = None
         self.reset()
 
     def reset(self):
@@ -14,7 +15,10 @@ class Ball:
             settings.SCREEN_WIDTH // 2, settings.BALL_START_Y, 
             self.radius * 2, self.radius * 2
         )
-        self.velocity = settings.BALL_START_VELOCITY[:]
+        if not self.velocity:
+            self.velocity = settings.BALL_START_VELOCITY[:]
+        else:
+            self.velocity = [abs(self.velocity[0]), abs(self.velocity[1])]
 
     def move(self, paddle, bricks, game):
         self.rect.x += self.velocity[0]
