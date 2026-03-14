@@ -1,7 +1,6 @@
 # ball.py
 
 import pygame
-import random
 import settings
 
 class Ball:
